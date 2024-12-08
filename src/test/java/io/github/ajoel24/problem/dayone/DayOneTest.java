@@ -16,7 +16,7 @@
 
 package io.github.ajoel24.problem.dayone;
 
-import io.github.ajoel24.problem.Problem;
+import io.github.ajoel24.problem.AdventOfCodeProblem;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -31,8 +31,8 @@ class DayOneTest {
 
     @Test
     void shouldSolveFirstProblem() throws IOException {
-        Problem problem = new DayOneQuestionOneProblem();
-        URL problemUrl = DayOneTest.class.getClassLoader().getResource("problems/day-1-1.txt");
+        AdventOfCodeProblem adventOfCodeProblem = new DayOne();
+        URL problemUrl = DayOneTest.class.getClassLoader().getResource("problems/day-1.txt");
         assertNotNull(problemUrl);
         Path problemPath = Path.of(problemUrl.getPath());
 
@@ -41,7 +41,25 @@ class DayOneTest {
         Path solutionPath = Path.of(solutionUrl.getPath());
         String solution = Files.readString(solutionPath);
 
-        Optional<String> result = problem.solve(problemPath);
+        Optional<String> result = adventOfCodeProblem.solveFirstProblem(problemPath);
+
+        assertTrue(result.isPresent());
+        assertEquals(solution, result.get());
+    }
+
+    @Test
+    void shouldSolveSecondProblem() throws IOException {
+        AdventOfCodeProblem adventOfCodeProblem = new DayOne();
+        URL problemUrl = DayOneTest.class.getClassLoader().getResource("problems/day-1.txt");
+        assertNotNull(problemUrl);
+        Path problemPath = Path.of(problemUrl.getPath());
+
+        URL solutionUrl = DayOneTest.class.getClassLoader().getResource("solutions/day-1-2.txt");
+        assertNotNull(solutionUrl);
+        Path solutionPath = Path.of(solutionUrl.getPath());
+        String solution = Files.readString(solutionPath);
+
+        Optional<String> result = adventOfCodeProblem.solveSecondProblem(problemPath);
 
         assertTrue(result.isPresent());
         assertEquals(solution, result.get());

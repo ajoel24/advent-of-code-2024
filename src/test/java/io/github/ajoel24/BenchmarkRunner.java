@@ -16,7 +16,7 @@
 
 package io.github.ajoel24;
 
-import io.github.ajoel24.problem.dayone.DayOneQuestionOneProblem;
+import io.github.ajoel24.problem.dayone.DayOne;
 import org.openjdk.jmh.annotations.Benchmark;
 
 import java.net.URISyntaxException;
@@ -30,7 +30,7 @@ public class BenchmarkRunner {
 
     @Benchmark
     public void run() throws URISyntaxException {
-        Path path = Paths.get(BenchmarkRunner.class.getClassLoader().getResource("problems/day-1-1.txt").toURI());
-        new DayOneQuestionOneProblem().solve(path);
+        Path path = Paths.get(BenchmarkRunner.class.getClassLoader().getResource("problems/day-1.txt").toURI());
+        new DayOne().solveFirstProblem(path);
     }
 }
